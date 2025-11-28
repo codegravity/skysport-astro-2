@@ -1,5 +1,5 @@
 {
-	"name": "astro-rico-portfolio",
+	"name": "astro-codegravity-mashup",
 	"type": "module",
 	"version": "1.0.0",
 	"description": "A modern, high-performance portfolio website template for designers built with Astro. Features retro blue theme, dark mode, and beautiful animations.",
@@ -14,20 +14,6 @@
 		"dark-mode",
 		"responsive"
 	],
-	"author": {
-		"name": "Ricoui",
-		"email": "hello@ricoui.com",
-		"url": "https://ricoui.com"
-	},
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/ricocc/ricoui-portfolio.git"
-	},
-	"bugs": {
-		"url": "https://github.com/ricocc/ricoui-portfolio/issues"
-	},
-	"homepage": "https://github.com/ricocc/ricoui-portfolio#readme",
-	"license": "Apache-2.0",
 	"scripts": {
 		"dev": "astro dev",
 		"start": "astro dev",
@@ -39,6 +25,7 @@
 	"devDependencies": {
 		"@astrojs/check": "^0.9.5",
 		"@biomejs/biome": "1.7.3",
+		"@tailwindcss/forms": "^0.5.10",
 		"@tailwindcss/typography": "^0.5.13",
 		"@types/matter-js": "^0.20.2",
 		"astro": "^5.15.4",
@@ -54,8 +41,13 @@
 		"@lucide/astro": "^0.546.0",
 		"@tailwindcss/vite": "^4.1.14",
 		"aos": "^2.3.4",
+		"astro-embed": "^0.9.2",
+		"astro-icon": "^1.1.5",
+		"astro-purgecss": "^5.3.0",
 		"matter-js": "^0.20.0",
 		"motion": "^12.23.24",
+		"preline": "^3.2.3",
+		"purgecss": "^7.0.2",
 		"sharp": "^0.34.4"
 	}
 }

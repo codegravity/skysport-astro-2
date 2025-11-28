@@ -1,18 +1,22 @@
 [
 	{
-		"name": "Home",
+		"name": "Hem",
 		"url": "/"
 	},
 	{
-		"name": "Writing",
-		"url": "/blog"
+		"name": "Tandem",
+		"url": "/tandem"
 	},
 	{
-		"name": "Works",
+		"name": "Kurs",
 		"url": "/works"
 	},
+		{
+		"name": "Resor",
+		"url": "/resor"
+	},
 	{
-		"name": "About",
+		"name": "Butik",
 		"url": "/about"
 	}
 ]

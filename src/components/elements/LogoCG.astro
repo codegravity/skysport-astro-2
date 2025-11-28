@@ -1,0 +1,41 @@
+---
+import { Image } from 'astro:assets';
+import logo from '../../assets/images/Skysport_Logo-01-invert-468.png';
+
+interface Props {
+    variant?: 'header' | 'footer' | 'dark';
+}
+
+const { variant = 'header' } = Astro.props;
+
+
+// Determine the appropriate CSS class based on the variant
+const getLogoClass = () => {
+    switch (variant) {
+        case 'header':
+            return ' text-header-logo hover:text-primary';
+        case 'footer':
+            return 'text-footer-logo hover:text-primary';
+        case 'dark':
+            return 'text-body-base hover:text-primary';
+        default:
+            return 'text-body-base hover:text-primary';
+    }
+};
+
+
+---
+
+<a href="/" >
+    <Image 
+        src={logo} 
+        alt="Skysport Home" 
+        class="  w-2/3 lg:w-3/3  h-auto object-contain  " 
+        width={468}
+        height={86}
+        decoding="async"
+        loading="lazy"
+        format="webp"
+       
+    />
+</a>

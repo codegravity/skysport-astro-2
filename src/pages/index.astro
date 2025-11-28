@@ -8,114 +8,113 @@ import BlogSection from "@/components/sections/BlogSection.astro";
 import SocialCard from "@/components/cards/SocialCard.astro";
 import AnimatedText from "@/components/ui/AnimatedText.astro";
 import Explore from "@/components/sections/Explore.astro";
+
+import ImageHero from "@/components/sections/ImageHero.astro";
+import VideoHero from "@/components/sections/VideoHero.astro";
+import HeroImage from '../assets/images/IMG_7595.jpg';
+import LogoImage from '../assets/images/Skysport_Logo-01-invert-468.png';
+import ThreeCards from "@/components/sections/ThreeCards.astro";
+import CardImage1 from '../assets/images/mellanmullfjallet27.jpg';
+import CardImage2 from '../assets/images/tandemhenning23.jpg';
+import CardImage3 from '../assets/images/pie3.jpg';
+
+import Reco from "@/components/sections/RecoBar.astro";
+
+const myVideo = "https://strapi-cdn-2.s3.eu-north-1.amazonaws.com/winter-start-25.MP4";
+
+const VideoContent = {
+    title: "Skärmflyg i Åre ",
+    description: "Skärmflygutbildning, Butik, Resor och Tandemflygning från Åreskutan. ",
+    backgroundVideo: myVideo,
+    descriptionImage: LogoImage,
+    overlayOpacity: 0.2,
+    page: "start"
+}
+
+const HeroContent = {
+    title: "Skärmflyg i Åre",
+    description: "Skärmflygutbildning, Butik, Resor och Tandemflygning från Åreskutan.",
+    backgroundImage: HeroImage,
+    descriptionImage: LogoImage,
+    overlayOpacity: 0.2
+}
+
+const CardContent = {
+    title1: "Grundkurs",
+    description1: "Förverkliga drömmen och lär dig skärmflyga. Under en 5 dagars intensivkurs i Åre flyger du både i liten backe och höjdflyg från Åreskutan. Kursen leder fram till licens.",
+    image1: CardImage1,
+    url1left: "start",
+    linktext1left: "Läs Mer",
+    url1right: "",
+    linktext1right: "BOKA",
+    title2: "Tandem",
+    description2: "Tillsammans med en erfaren instruktör flyger du på ett säkert och avslappnat sätt från Åreskutan. Arrangeras dagligen under säsong. Inga förkunskaper krävs.",
+    image2: CardImage2,
+    url2left: "start",
+    linktext2left: "Läs Mer",
+    url2right: "tandem",
+    linktext2right: "BOKA",
+    title3: "Nyheter",
+    description3: "Vinter/Vår 2026:  Vi startar säsongen 2 februari. Under februari-september arrangeras kurser kontinuerligt.",
+    image3: CardImage3,
+    url3left: "",
+    linktext3left: "",
+    url3right: "/blog",
+    linktext3right: "NYHETER",
+
+}
 ---
 
 <Layout
-title="Rico Portfolio Site 2025"
+title="Skysport Skärmflygskola i Åre"
 description="Welcome to Rico's portfolio site! Explore my work as a web/UI designer with 8+ years of experience in creating captivating visuals and interactive experiences."
 keywords="Rico, Portfolio, Web Design, UI Design, Frontend Development, Creative Designer"
 >
-  <div
-    class="relative site-container z-20  w-full mx-auto mt-16 px-4 md:mt-18 lg:mt-20 xl:px-0"
-  >
-    <div class="relative w-full px-4 flex flex-col items-center justify-between md:flex-row mb-16 ">
-      <div class="relative w-full md:max-w-[420px] md:w-1/2 text-center sm:text-left sm:-mt-8">
-        <!-- Title - AnimatedText animation -->
-        <h1 class="mb-4">
-          <AnimatedText
-            content="Hi, I'm Rico"
-            delay={0.1}
-            duration={0.5}
-            stagger={0.08}
-            class="text-5xl text-pri leading-tight md:text-4xl lg:text-6xl font-brand "
-          />
-        </h1>
 
-        <!-- First description - AnimatedText animation -->
-        <div class="mb-2">
-          <AnimatedText
-            content="I'm a web/UI designer with 8+ years of experience. I love blending design and code to create captivating visuals and interactive experiences."
-            delay={0.3}
-            duration={0.5}
-            stagger={0.015}
-            class="text-base text-neutral-700 dark:text-neutral-300"
-          />
-        </div>
-
-        <!-- Second description - AnimatedText animation -->
-        <div class="mb-4">
-          <AnimatedText
-            content="I believe great design should be both delightful and solve real-world challenges."
-            delay={0.5}
-            duration={0.5}
-            stagger={0.015}
-            class="text-base text-neutral-700 dark:text-neutral-300"
-          />
-        </div>
-
-        <!-- Button - AOS animation -->
-        <div
-          class=""
-          data-aos="fade-up-sm"
-          data-aos-delay="900"
-          data-aos-duration="500"
-          data-aos-once="true"
-        >
-          <Button url={siteConfig.social.twitter} type="fill" className="m-auto mt-4 text-center sm:text-left sm:m-0 sm:mt-6 max-w-[200px]">
-            Follow me on 𝕏
-          </Button>
-        </div>
-
-        <!-- Social Cards - AOS animation -->
-        <div
-          class="social mt-8 mb-8"
-          data-aos="fade-up-sm"
-          data-aos-delay="1000"
-          data-aos-duration="600"
-          data-aos-once="true"
-        >
-          <SocialCard displaySocialIds={[1, 2, 3,4]}/>
-        </div>
-      </div>
-
-      <!-- HeroCard - AOS animation -->
-      <div
-        class="relative justify-end w-full mt-16 md:flex md:pl-10 md:w-1/2 md:mt-0 md:translate-y-4 xl:translate-y-0"
-        data-aos="fade-left-sm"
-        data-aos-delay="300"
-        data-aos-duration="800"
-        data-aos-once="true"
-      >
-        <HeroCard
-          imageUrl="/assets/home/gradientshub.jpg"
-          title="Gradientshub"
-          link="https://gradientshub.com"
-        />
-      </div>
-    </div>
+  <ImageHero content={HeroContent}/> 
+    <section >
+     <ThreeCards content={CardContent}/>
+  </section>
+  <section >
+     <Reco />
+  </section>
+  <section >
+    <div class="site-container p-10 text-center ">
+   <button type="button" class="py-3 px-4 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 focus:outline-hidden focus:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none" aria-haspopup="dialog" aria-expanded="false" aria-controls="hs-offcanvas-example" data-hs-overlay="#hs-offcanvas-example">
+  Open (right) offcanvas
+</button>
+</div>
+</section>
+<div id="hs-offcanvas-example" class="hs-overlay hs-overlay-open:translate-x-0 hidden translate-x-full fixed top-0 end-0 transition-all duration-300 transform h-full max-w-xs w-full z-80 bg-white border-e border-gray-200 dark:bg-neutral-800 dark:border-neutral-700" role="dialog" tabindex="-1" aria-labelledby="hs-offcanvas-example-label">
+  <div class="flex justify-between items-center py-3 px-4 border-b border-gray-200 dark:border-neutral-700">
+    <h3 id="hs-offcanvas-example-label" class="font-bold text-gray-800 dark:text-white">
+      Offcanvas title
+    </h3>
+    <button type="button" class="size-8 inline-flex justify-center items-center gap-x-2 rounded-full border border-transparent bg-gray-100 text-gray-800 hover:bg-gray-200 focus:outline-hidden focus:bg-gray-200 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-700 dark:hover:bg-neutral-600 dark:text-neutral-400 dark:focus:bg-neutral-600" aria-label="Close" data-hs-overlay="#hs-offcanvas-example">
+      <span class="sr-only">Close</span>
+      <svg class="shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M18 6 6 18"></path>
+        <path d="m6 6 12 12"></path>
+      </svg>
+    </button>
   </div>
+  <div class="p-4">
+    <p class="text-gray-800 dark:text-neutral-400">
+      Some text as placeholder. In real life you can have the elements you have chosen. Like, text, images, lists, etc.
+    </p>
+  </div>
+</div> 
 
-  <section
-    class="mt-26 mb-12"
-    data-aos="fade-up-sm"
-    data-aos-delay="100"
-    data-aos-duration="600"
-    data-aos-once="true"
-  >
-    <Explore title="Explore ↓"  />
+  <section >
+    <!-- <Explore title="Explore ↓"  /> -->
   </section>
 
-  <section
-    class="mt-26 mb-12"
-    data-aos="fade-up-sm"
-    data-aos-delay="100"
-    data-aos-duration="600"
-    data-aos-once="true"
-  >
-    <FeaturedWork title="Featured Work ↓" description="I create innovative and purposeful designs that not only capture attention but also drive meaningful results." limit={5} />
-  </section>
+  <section  >
+ 
+  <!--   <FeaturedWork title="Featured Work ↓" description="I create innovative and purposeful designs that not only capture attention but also drive meaningful results." limit={5} />
+  --> </section>
 
-  <section
+ <!--  <section
     class="mt-26 mb-12"
     data-aos="fade-up-sm"
     data-aos-delay="100"
@@ -127,6 +126,6 @@ keywords="Rico, Portfolio, Web Design, UI Design, Frontend Development, Creative
       description="These are my notes and articles on design, development and life thinking."
       showViewAllButton={true}
     />
-  </section>
+  </section> -->
 
 </Layout>

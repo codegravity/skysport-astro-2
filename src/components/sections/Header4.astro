@@ -1,0 +1,297 @@
+---
+import { Mail, Moon, SunMedium,Download } from "@lucide/astro";
+import menus from "@/collections/menu.json";
+import Button from "@/components/ui/Button.astro";
+//import Logo from "@/components/ui/Logo.astro";
+import Logo from "@/components/elements/LogoCG.astro";
+---
+
+<!-- This is an invisible div with relative position so that it takes up the height of the menu (because menu is absolute/fixed) -->
+<div class="relative w-full h-16 sm:h-20 opacity-0 pointer-events-none"></div>
+<header id="header" class="fixed top-0 sm:top-4 z-50 w-full px-1 sm:px-4 lg:px-6">
+  <div id="site-container"
+    class="flex items-center justify-between h-14 sm:h-15 lg:site-container mx-auto px-2 sm:px-4 py-2.5 border-transparent border-[0.5px] transition-all duration-300"
+  >
+    <!-- Logo -->
+    <div class="lg:flex-shrink-0 z-50">
+      <Logo />
+    </div>
+
+    <!-- Mobile Menu Background Overlay -->
+    <div
+      id="mobileMenuBackground"
+      class="fixed inset-0 z-20 hidden w-screen h-screen duration-300 ease-out bg-white/90 backdrop-blur-sm dark:bg-neutral-950/90"
+    >
+    </div>
+
+    <!-- Navigation -->
+        <nav class="max-w-[85rem] w-full mx-auto px-4 sm:flex sm:items-center sm:justify-between">
+    <div class="flex items-center justify-between">
+      <a class="flex-none text-xl font-semibold dark:text-white focus:outline-hidden focus:opacity-80" href="#" aria-label="Brand">
+        Brand
+      </a>
+      <div class="sm:hidden">
+        <button type="button" class="hs-collapse-toggle relative size-9 flex justify-center items-center gap-x-2 rounded-lg border border-gray-200 bg-white text-gray-800 shadow-2xs hover:bg-gray-50 focus:outline-hidden focus:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-transparent dark:border-neutral-700 dark:text-white dark:hover:bg-white/10 dark:focus:bg-white/10" id="hs-navbar-example-collapse" aria-expanded="false" aria-controls="hs-navbar-example" aria-label="Toggle navigation" data-hs-collapse="#hs-navbar-example">
+          <svg class="hs-collapse-open:hidden shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" x2="21" y1="6" y2="6"/><line x1="3" x2="21" y1="12" y2="12"/><line x1="3" x2="21" y1="18" y2="18"/></svg>
+          <svg class="hs-collapse-open:block hidden shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+          <span class="sr-only">Toggle navigation</span>
+        </button>
+      </div>
+    </div>
+    <div id="hs-navbar-example" class="hidden hs-collapse overflow-hidden transition-all duration-300 basis-full grow sm:block" aria-labelledby="hs-navbar-example-collapse">
+      <div class="flex flex-col gap-5 mt-5 sm:flex-row sm:items-center sm:justify-end sm:mt-0 sm:ps-5">
+        <a class="font-medium text-blue-500 focus:outline-hidden" href="#" aria-current="page">Landing</a>
+        <a class="font-medium text-gray-600 hover:text-gray-400 focus:outline-hidden focus:text-gray-400 dark:text-neutral-400 dark:hover:text-neutral-500 dark:focus:text-neutral-500" href="#">Account</a>
+        <a class="font-medium text-gray-600 hover:text-gray-400 focus:outline-hidden focus:text-gray-400 dark:text-neutral-400 dark:hover:text-neutral-500 dark:focus:text-neutral-500" href="#">Work</a>
+        <a class="font-medium text-gray-600 hover:text-gray-400 focus:outline-hidden focus:text-gray-400 dark:text-neutral-400 dark:hover:text-neutral-500 dark:focus:text-neutral-500" href="#">Blog</a>
+      </div>
+    </div>
+  </nav>
+  </div>
+</header>
+
+<style>
+  /* Header container spacing optimization */
+  #header {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* Ensure mobile menu doesn't stick to edges */
+  @media (max-width: 639px) {
+    #menu {
+      max-width: calc(100vw - 24px); /* 12px margin on each side */
+    }
+  }
+
+  /* Mobile menu animation */
+  @media (max-width: 639px) {
+    #menu {
+      transform: translateY(-10px);
+      opacity: 0;
+      pointer-events: none;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    #menu:not(.hidden) {
+      transform: translateY(0);
+      opacity: 1;
+      pointer-events: auto;
+    }
+  }
+
+  /* Menu item hover effect optimization */
+  nav a {
+    position: relative;
+  }
+
+  /* Desktop underline animation */
+  @media (min-width: 640px) {
+    nav a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%) scaleX(0);
+      width: 70%;
+      height: 2px;
+      background: var(--color-primary);
+      transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      border-radius: 2px;
+    }
+
+    nav a:hover::after {
+      transform: translateX(-50%) scaleX(1);
+    }
+  }
+
+  /* Mobile menu item click feedback */
+  @media (max-width: 639px) {
+    nav a:active {
+      background-color: var(--color-neutral-100);
+    }
+
+    .dark nav a:active {
+      background-color: rgba(255, 255, 255, 0.05);
+    }
+  }
+
+
+  /* Dark mode toggle button optimization */
+  #darkToggle,
+  #darkToggleMobile {
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  /* Mobile menu background blur effect enhancement */
+  @supports (backdrop-filter: blur(12px)) {
+    #mobileMenuBackground {
+      backdrop-filter: blur(12px);
+    }
+
+    @media (max-width: 639px) {
+      #menu > div > div {
+        backdrop-filter: blur(16px);
+      }
+    }
+  }
+
+  /* Ensure Logo doesn't shrink on mobile */
+  .flex-shrink-0 {
+    min-width: fit-content;
+  }
+
+  /* Tablet compact layout */
+  @media (min-width: 640px) and (max-width: 767px) {
+    nav a {
+      padding-left: 0.5rem;
+      padding-right: 0.5rem;
+      font-size: 0.8125rem;
+    }
+  }
+
+  /* Prevent horizontal scrolling on mobile */
+  @media (max-width: 639px) {
+    body {
+      overflow-x: hidden;
+    }
+  }
+
+  /* Optimize mobile touch feedback */
+  @media (max-width: 639px) {
+    button, a, [role="button"] {
+      -webkit-tap-highlight-color: transparent;
+    }
+  }
+
+  /* Menu background on small screens */
+  @media (max-width: 639px) {
+    #mobileMenuBackground {
+      opacity: 0;
+      transition: opacity 0.3s ease-out;
+    }
+
+    #mobileMenuBackground:not(.hidden) {
+      opacity: 1;
+    }
+  }
+
+  /* Ensure mobile menu has good shadow */
+  @media (max-width: 639px) {
+    #menu > div > div {
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1),
+                  0 8px 10px -6px rgba(0, 0, 0, 0.05);
+    }
+
+    .dark #menu > div > div {
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3),
+                  0 8px 10px -6px rgba(0, 0, 0, 0.2);
+    }
+  }
+</style>
+
+<script>
+  // Declare global types to fix TypeScript errors
+  declare global {
+    interface Window {
+      closeMobileMenu: () => void;
+    }
+  }
+
+  // Sync dark mode toggle between mobile and desktop
+  const darkToggle = document.getElementById('darkToggle');
+  const darkToggleMobile = document.getElementById('darkToggleMobile');
+
+  function syncDarkModeIcons() {
+    const isDark = document.documentElement.classList.contains('dark');
+    const sunIcons = document.querySelectorAll('#sun, .mobile-sun');
+    const moonIcons = document.querySelectorAll('#moon, .mobile-moon');
+
+    if (isDark) {
+      moonIcons.forEach(icon => icon.classList.remove('hidden'));
+      sunIcons.forEach(icon => icon.classList.add('hidden'));
+      document.getElementById('dayText')?.classList.add('hidden');
+      document.getElementById('nightText')?.classList.remove('hidden');
+    } else {
+      sunIcons.forEach(icon => icon.classList.remove('hidden'));
+      moonIcons.forEach(icon => icon.classList.add('hidden'));
+      document.getElementById('dayText')?.classList.remove('hidden');
+      document.getElementById('nightText')?.classList.add('hidden');
+    }
+  }
+
+  // Sync on initialization
+  document.addEventListener('DOMContentLoaded', syncDarkModeIcons);
+
+  // Listen for dark mode changes
+  const observer = new MutationObserver(syncDarkModeIcons);
+  observer.observe(document.documentElement, {
+    attributes: true,
+    attributeFilter: ['class']
+  });
+
+  // Mobile dark mode toggle
+  darkToggleMobile?.addEventListener('click', () => {
+    darkToggle?.click();
+  });
+
+  // Optimize mobile menu open/close
+  const openMenu = document.getElementById('openMenu');
+  const closeMenu = document.getElementById('closeMenu');
+  const menu = document.getElementById('menu');
+  const mobileMenuBackground = document.getElementById('mobileMenuBackground');
+
+  // Mobile menu open function
+  function openMobileMenu() {
+    menu?.classList.remove('hidden');
+    mobileMenuBackground?.classList.remove('hidden');
+    openMenu?.classList.add('hidden');
+    closeMenu?.classList.remove('hidden');
+    closeMenu?.classList.add('flex');
+    document.body.style.overflow = 'hidden'; // Prevent background scrolling
+  }
+
+  // Mobile menu close function
+  function closeMobileMenu() {
+    menu?.classList.add('hidden');
+    mobileMenuBackground?.classList.add('hidden');
+    closeMenu?.classList.add('hidden');
+    closeMenu?.classList.remove('flex');
+    openMenu?.classList.remove('hidden');
+    document.body.style.overflow = ''; // Restore scrolling
+  }
+
+  // Click hamburger button to open menu
+  openMenu?.addEventListener('click', openMobileMenu);
+
+  // Click close button to close menu
+  closeMenu?.addEventListener('click', closeMobileMenu);
+
+  // Click background to close menu
+  mobileMenuBackground?.addEventListener('click', closeMobileMenu);
+
+  // Add click-to-close functionality for mobile menu items
+  const menuLinks = menu?.querySelectorAll('a');
+  menuLinks?.forEach(link => {
+    link.addEventListener('click', () => {
+      // Check if in mobile view
+      if (window.innerWidth < 640) {
+        closeMobileMenu();
+      }
+    });
+  });
+
+  // Handle window resize
+  window.addEventListener('resize', () => {
+    if (window.innerWidth >= 640) {
+      // If resizing from mobile to desktop, ensure menu state is correct
+      document.body.style.overflow = '';
+      if (menu?.classList.contains('hidden')) {
+        menu.classList.remove('hidden');
+      }
+    }
+  });
+
+  // Add to global scope so inline events can call it
+  window.closeMobileMenu = closeMobileMenu;
+</script>

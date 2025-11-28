@@ -5,6 +5,9 @@ import sitemap from "@astrojs/sitemap";
 import { fileURLToPath } from "url";
 import path from "path";
 
+import icon from "astro-icon";
+import purgecss from "astro-purgecss";
+
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 // Get the site URL from environment variables, or use the default value if not set
 // Note: After the first deployment, be sure to set the correct PUBLIC_SITE_URL in the .env file
@@ -28,5 +31,5 @@ export default defineConfig({
     port: 5200,
   },
 
-  integrations: [mdx(), sitemap()],
+  integrations: [mdx(), sitemap(), icon(), purgecss()],
 });

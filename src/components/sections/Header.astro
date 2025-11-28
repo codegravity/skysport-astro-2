@@ -2,17 +2,18 @@
 import { Mail, Moon, SunMedium,Download } from "@lucide/astro";
 import menus from "@/collections/menu.json";
 import Button from "@/components/ui/Button.astro";
-import Logo from "@/components/ui/Logo.astro";
+//import Logo from "@/components/ui/Logo.astro";
+import Logo from "@/components/elements/LogoCG.astro";
 ---
 
 <!-- This is an invisible div with relative position so that it takes up the height of the menu (because menu is absolute/fixed) -->
 <div class="relative w-full h-16 sm:h-20 opacity-0 pointer-events-none"></div>
-<header id="header" class="fixed top-2 sm:top-4 z-50 w-full px-3 sm:px-4 lg:px-6">
+<header id="header" class="fixed top-0 sm:top-4 z-50 w-full px-1 sm:px-4 lg:px-6">
   <div id="site-container"
-    class="flex items-center justify-between h-14 sm:h-15 site-container mx-auto px-4 sm:px-6 py-2.5 border-transparent border-[0.5px] transition-all duration-300"
+    class="flex items-center justify-between h-14 sm:h-15 lg:site-container mx-auto px-2 sm:px-4 py-2.5 border-transparent border-[0.5px] transition-all duration-300"
   >
     <!-- Logo -->
-    <div class="flex-shrink-0 z-50">
+    <div class="lg:flex-shrink-0 z-50">
       <Logo />
     </div>
 
@@ -111,18 +112,18 @@ import Logo from "@/components/ui/Logo.astro";
 
         <!-- Contact Button (Mobile) -->
         <div class="relative z-10 w-full px-5 mt-3 sm:hidden">
-          <Button url="javascript:void(0);" type="fill" className="m-auto w-full justify-center ">
+<!--           <Button url="javascript:void(0);" type="fill" className="m-auto w-full justify-center ">
             Resume <Download size={16} />
-          </Button>
+          </Button> -->
         </div>
       </div>
 
       <!-- Desktop Actions -->
       <div class="relative hidden sm:flex items-center gap-2 ml-4 lg:ml-6">
         <!-- Contact Button (Desktop) -->
-        <Button url="javascript:void(0);" type="fill" className="md:flex mx-1">
+<!--         <Button url="javascript:void(0);" type="fill" className="md:flex mx-1">
           Resume <Download size={16} />
-        </Button>
+        </Button> -->
 
         <span class="separator-line  hidden sm:inline-block bg-[rgba(183,202,255,0.5)] mt-[20px] -translate-y-1/2 w-px h-[20px]"></span>
 
@@ -141,8 +142,8 @@ import Logo from "@/components/ui/Logo.astro";
               id="moon" />
           </div>
           <span class="hidden sm:inline-block whitespace-nowrap">
-            <span id="dayText" class="flex-shrink-0 text-sm text-left text-[#6f6c8f] dark:text-neutral-400">Light</span>
-            <span id="nightText" class="hidden flex-shrink-0 text-sm text-left text-[#6f6c8f] dark:text-neutral-400">Dark</span>
+            <span id="dayText" class="flex-shrink-0 text-sm text-left text-[#6f6c8f] dark:text-neutral-400">Ljus</span>
+            <span id="nightText" class="hidden flex-shrink-0 text-sm text-left text-[#6f6c8f] dark:text-neutral-400">Mörk</span>
           </span>
         </div>
       </div>
