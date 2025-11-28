@@ -1,5 +1,7 @@
 // Add your javascript here
-import AOS from 'aos';
+
+
+//import AOS from 'aos';
 
 window.darkMode = false;
 
@@ -171,7 +173,7 @@ function mobileMenuFunctionality() {
 	});
 }
 
-window.openMobileMenu = () => {
+/* window.openMobileMenu = () => {
 	document.getElementById("openMenu").classList.add("hidden");
 	document.getElementById("closeMenu").classList.remove("hidden");
 	document.getElementById("menu").classList.remove("hidden");
@@ -191,3 +193,4 @@ window.closeMobileMenu = () => {
 	document.getElementById("menu").classList.add("hidden");
 	document.getElementById("mobileMenuBackground").classList.add("hidden");
 };
+ */

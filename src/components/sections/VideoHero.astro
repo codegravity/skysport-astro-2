@@ -1,13 +1,13 @@
 ---
 //import {  Vimeo, YouTube } from 'astro-embed';
 import { Image } from 'astro:assets';
-//import Button from '@components/ui/Button.astro';
+
 
 
 const { content } = Astro.props;
 const opacity = content.overlayOpacity ?? 1; // Default opacity if not specified
 const myVideo = content.backgroundVideo;
-const pageLink = content.page;
+//const pageLink = content.page;
 
 ---
 
@@ -45,18 +45,6 @@ const pageLink = content.page;
         )} 
         <p class="text-white text-4xl text-balance" data-aos="fade-up">{content.title}</p>
         <p class="text-white mt-2 text-balance" data-aos="fade-up" data-aos-delay="100">{content.description}</p> 
-        {content.buttons && content.buttons.length > 0 && (
-            <div class="flex flex-wrap gap-4 mt-8" data-aos="fade-up">
-                {content.buttons.map((button) => (
-                    <Button
-                        href={button.link}
-                        target={button.target || '_self'}
-                        variant={button.variant || 'primary'}
-                    >
-                        {button.text}
-                    </Button>
-                ))}
-            </div>
-        )}
+ 
     </div>
 </section>
